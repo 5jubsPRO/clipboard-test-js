@@ -17,6 +17,7 @@
         <textarea class="js-test-textarea" cols="35" rows="4">Try pasting into here to see what you have on your clipboard:
 
         </textarea>
+        <input type='text' id='camCodigo' name='camCodigo' value='' style='font-size: 16px;'>
 </div>
 <div style="display:block;">
     <textarea class="js-console" rows="10" style="width: 100%"></textarea>
@@ -54,8 +55,12 @@
         }
         navigator.clipboard.writeText(text).then(function() {
             console.log('Async: Copying to clipboard was successful!');
+            document.getElementById('camCodigo').value = text;
+            document.getElementById('camCodigo').select();
         }, function(err) {
             console.error('Async: Could not copy text: ', err);
+            document.getElementById('camCodigo').value = 'erro!';
+            document.getElementById('camCodigo').select();
         });
     }
 
@@ -106,3 +111,4 @@
 </script>
 </body>
 </html>
+<!--This is an exemple of hide and display: https://jsfiddle.net/82ewo05p/-->
